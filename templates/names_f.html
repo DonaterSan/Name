@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mas</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Все записи</h1>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Text</th>
+            <th>Link</th>
+        </tr>
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.id }}</td>
+            <td>{{ article.text }}</td>
+            <td><a href="/names/{{ article.id }}">/names/{{ article.id }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+</body>
+</html>

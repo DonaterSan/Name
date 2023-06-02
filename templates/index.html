@@ -1,67 +1,7 @@
-{% extends 'base.html' %}
-
-{% block title %}
-Главная стр
-{% endblock %}
-
-{% block body %}
-<div class="container">
-<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">Pricing</h1>
-      <p class="fs-5 text-body-secondary"><ya-tr-span data-index="9-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Quickly build an effective pricing table for your potential customers with this Bootstrap example. " data-translation="Быстро создайте эффективную таблицу цен для ваших потенциальных клиентов с помощью этого примера начальной загрузки. " data-ch="0" data-type="trSpan">Quickly build an effective pricing table for your potential customers with this Bootstrap example. </ya-tr-span><ya-tr-span data-index="9-1" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="It’s built with default Bootstrap components and utilities with little customization." data-translation="Он построен с использованием компонентов и утилит Bootstrap по умолчанию с небольшими настройками." data-ch="0" data-type="trSpan">It’s built with default Bootstrap components and utilities with little customization.</ya-tr-span></p>
+<div class="form-floating">
+    <form action="/test" action="{{ url_for('index')}}" method="post">
+        <label for="floatingInput">Name</label>
+        <input type="text" name="text" required class="form-control" id="floatingInput">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
 </div>
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><ya-tr-span data-index="10-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Free" data-translation="Бесплатно" data-ch="0" data-type="trSpan">Free</ya-tr-span></h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title"><ya-tr-span data-index="11-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="$0" data-translation="0 долларов" data-ch="0" data-type="trSpan">$0</ya-tr-span><small class="text-body-secondary fw-light"><ya-tr-span data-index="11-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="/mo" data-translation="/ месяц" data-ch="0" data-type="trSpan">/mo</ya-tr-span></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li><ya-tr-span data-index="12-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="10 users included" data-translation="в том числе 10 пользователей" data-ch="0" data-type="trSpan">10 users included</ya-tr-span></li>
-              <li><ya-tr-span data-index="13-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="2 GB of storage" data-translation="2 ГБ памяти" data-ch="0" data-type="trSpan">2 GB of storage</ya-tr-span></li>
-              <li><ya-tr-span data-index="14-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Email support" data-translation="Поддержка по электронной почте" data-ch="0" data-type="trSpan">Email support</ya-tr-span></li>
-              <li><ya-tr-span data-index="15-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Help center access" data-translation="Доступ к справочному центру" data-ch="0" data-type="trSpan">Help center access</ya-tr-span></li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary"><ya-tr-span data-index="16-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Sign up for free" data-translation="Зарегистрируйтесь бесплатно" data-ch="0" data-type="trSpan" data-selected="false">Sign up for free</ya-tr-span></button>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><ya-tr-span data-index="17-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Pro" data-translation="Профессиональный" data-ch="0" data-type="trSpan">Pro</ya-tr-span></h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title"><ya-tr-span data-index="18-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="$15" data-translation="15 долларов" data-ch="0" data-type="trSpan">$15</ya-tr-span><small class="text-body-secondary fw-light"><ya-tr-span data-index="18-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="/mo" data-translation="/ месяц" data-ch="0" data-type="trSpan">/mo</ya-tr-span></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li><ya-tr-span data-index="19-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="20 users included" data-translation="в том числе 20 пользователей" data-ch="0" data-type="trSpan">20 users included</ya-tr-span></li>
-              <li><ya-tr-span data-index="20-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="10 GB of storage" data-translation="10 ГБ памяти" data-ch="0" data-type="trSpan">10 GB of storage</ya-tr-span></li>
-              <li><ya-tr-span data-index="21-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Priority email support" data-translation="Приоритетная поддержка по электронной почте" data-ch="0" data-type="trSpan">Priority email support</ya-tr-span></li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary"><ya-tr-span data-index="22-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Get started" data-translation="Начало работы" data-ch="0" data-type="trSpan">Get started</ya-tr-span></button>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-          <div class="card-header py-3 text-bg-primary border-primary">
-            <h4 class="my-0 fw-normal">Enterprise</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title"><ya-tr-span data-index="23-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="$29" data-translation="29 долларов" data-ch="0" data-type="trSpan">$29</ya-tr-span><small class="text-body-secondary fw-light"><ya-tr-span data-index="23-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="/mo" data-translation="/ месяц" data-ch="0" data-type="trSpan">/mo</ya-tr-span></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li><ya-tr-span data-index="24-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="30 users included" data-translation="в том числе 30 пользователей" data-ch="0" data-type="trSpan">30 users included</ya-tr-span></li>
-              <li><ya-tr-span data-index="25-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="15 GB of storage" data-translation="15 ГБ памяти" data-ch="0" data-type="trSpan">15 GB of storage</ya-tr-span></li>
-              <li><ya-tr-span data-index="26-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Phone and email support" data-translation="Поддержка по телефону и электронной почте" data-ch="0" data-type="trSpan">Phone and email support</ya-tr-span></li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary"><ya-tr-span data-index="27-0" data-translated="false" data-source-lang="en" data-target-lang="ru" data-value="Contact us" data-translation="Связаться с нами" data-ch="0" data-type="trSpan">Contact us</ya-tr-span></button>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-{% endblock %}
