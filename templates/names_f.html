@@ -16,8 +16,8 @@
         {% for article in articles %}
         <tr>
             <td>{{ article.id }}</td>
-            <td>{{ article.text }}</td>
             <td><a href="/names/{{ article.id }}">Подробнее</a></td>
+            <td><a href="/names/{{ article.id }}/up">Редактировать</a></td>
             <td><a href="/names/{{ article.id }}/del">Удалить</a></td>
         </tr>
         {% endfor %}
