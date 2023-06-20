@@ -10,20 +10,19 @@
     <table>
         <tr>
             <th>id</th>
-            <th>Text</th>
+            <th>nickname</th>
             <th>Link</th>
         </tr>
-        {% for article in articles %}
+        {% for user in users %}
         <tr>
-            <td>{{ article.id }}</td>
-            <td><a href="/names/{{ article.id }}">Подробнее</a></td>
-            <td><a href="/names/{{ article.id }}/up">Редактировать</a></td>
-            <td><a href="/names/{{ article.id }}/del">Удалить</a></td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.nickname }}</td>
+            <td><a href="/names/{{ el.id }}">Подробнее</a></td>
+            <td><a href="/names/{{ el.id }}/up">Редактировать</a></td>
+            <td><a href="/names/{{ el.id }}/del">Удалить</a></td>
         </tr>
         {% endfor %}
     </table>
-    <td><a href="/">Добавить</a></td>
-
 </div>
 </body>
 </html>

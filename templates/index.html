@@ -1,11 +1,11 @@
 <div class="form-floating">
     <form action="/name_log" action="{{ url_for('index')}}" method="post">
         <label>Email</label>
-        <input type="text" name="email" required class="form-control" minlength="5">
+        <input type="text" name="email" required class="form-control" minlength="1">
     </form>
     <form action="/name_log" action="{{ url_for('index')}}" method="post">
         <label>Password</label>
-        <input type="text" name="password" required class="form-control" minlength="5">
+        <input type="text" name="password" required class="form-control" minlength="1">
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     </form>
     <td><a href="/name_reg">Reg</a></td>

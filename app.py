@@ -12,31 +12,21 @@ db = SQLAlchemy(app)
 log_manager = LoginManager(app)
 
 
-class Article(db.Model, UserMixin):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    nickname = db.Column(db.String(20), nullable=False)
     login = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):
-        return '<Article %r>' % self.id
+        return '<User %r>' % self.id
 
 
 @app.route('/')
 @app.route('/test', methods=['POST', 'GET'])
+@login_required
 def index():
-    if request.method == "POST":
-        login = request.form.get('login')
-        password = request.form.get('password')
-        article = Article(login=login, password=password)
-
-        try:
-            db.session.add(article)
-            db.session.commit()
-            return redirect('/success')
-        except:
-            return 'Миша всё ху@ня давай по новой'
-    else:
-        return redirect('/name_log')
+    return render_template('names_f.html')
 
 
 @app.route('/name_reg', methods=['POST', 'GET'])
@@ -44,19 +34,20 @@ def name_reg():
     login = request.form.get('login')
     password = request.form.get('password')
     password2 = request.form.get('password2')
+    nickname = request.form.get('nickname')
 
     if request.method == 'POST':
-        if not(login or password2 or password):
+        if not (login or password2 or password or nickname):
             flash('Заполните все поля')
         elif password != password2:
             flash('Пароли не одинаковые')
         else:
             pwd = generate_password_hash(password)
-            new_user = Article(login=login, password=pwd)
+            new_user = User(login=login, password=pwd, nickname=nickname)
             db.session.add(new_user)
             db.session.commit()
 
-            return render_template('login.html')
+            return redirect(url_for('name_log'))
 
     return render_template('name_reg.html')
 
@@ -67,24 +58,20 @@ def name_log():
     password = request.form.get('password')
 
     if login and password:
-        log = Article.query.filter_by(login=login).first()
+        user = User.query.filter_by(login=login).first()
 
-        if log and check_password_hash(Article.password, password):
-            login_user(log)
+        if user and check_password_hash(user.password, password):
+            login_user(user)
 
-            next = request.args.get('next')
-
-            redirect(next)
+            return render_template('names_f.html')
         else:
-            flash('Заполните все поля')
-    else:
-        flash('Error')
-        return render_template('login.html')
+            flash('Неправильный логин или пароль')
+    return render_template('login.html')
 
 
 @log_manager.user_loader
-def load_user(article_id):
-    return Article.query.get(article_id)
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 @app.route('/logout')
@@ -97,46 +84,46 @@ def logout():
 @app.route('/names')
 @login_required
 def names():
-    articles = Article.query.all()
-    return render_template('names_f.html', articles=articles or [])
+    user = User.query.all()
+    return render_template('names_f.html', user=user or [])
 
 
-@app.route('/names/<article_id>/del')
+@app.route('/names/<user_id>/del')
 @login_required
-def names_del(article_id):
-    article = Article.query.get_or_404(article_id)
+def names_del(user_id):
+    user = User.query.get_or_404(user_id)
 
     try:
-        db.session.delete(article)
+        db.session.delete(user)
         db.session.commit()
         return redirect('/names')
     except:
         return "Миша всё ху@ня давай по новой"
 
 
-@app.route('/names/<article_id>/up', methods=['POST', 'GET'])
+@app.route('/names/<user_id>/up', methods=['POST', 'GET'])
 @login_required
-def name_up(article_id):
+def name_up(user_id):
     if request.method == "POST":
         login = request.form['login']
-        article = Article(login=login)
+        user = User(login=login)
 
         try:
-            db.session.add(article)
+            db.session.add(user)
             db.session.commit()
             return redirect('/success')
         except:
             return 'Миша всё ху@ня давай по новой'
     else:
-        article = Article.query.get(article_id)
-        return render_template("name_up.html", article=article)
+        user = User.query.get(user_id)
+        return render_template("name_up.html", user=user)
 
 
-@app.route('/names/<article_id>')
+@app.route('/names/<user_id>')
 @login_required
-def names_item(article_id):
-    article = Article.query.get(article_id)
-    return render_template('names_item.html', article=article)
+def names_item(user_id):
+    user = User.query.get(user_id)
+    return render_template('names_item.html', user=user)
 
 
 @app.route('/success')
